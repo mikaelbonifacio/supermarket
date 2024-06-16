@@ -36,6 +36,17 @@ public class SupermarketArray implements Supermarket{
 
     @Override
     public void delete(int index) {
+        if (index >= 0 && index <= lastIndex) {
+            shift(index);
+            lastIndex--;
+        } else {
+            System.err.println("Indice inválido: " + index);
+        }
+    }
 
+    private void shift(int index) {
+        for(int i = index; i > lastIndex; i++ ) {
+            items[i] = items[i+1];
+        }
     }
 }
